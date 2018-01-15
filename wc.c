@@ -43,9 +43,8 @@ int main(){
 
 	}
 	if (zustand==1) word++;	
-	printf("%d\n",c);		
 
-	printf("w:%d l:%d c:%d",word,line,character);
+	printf("%d %d %d",line,word,character);
 	
 	return 0;
 }

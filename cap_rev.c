@@ -25,7 +25,7 @@ int main( int argc, char * argv [] ) {
 		printf("usage: %s <string>+\n", prog );
 		return 1;
 	}
-	for (i = 1; i < argc; i++) {
+	for (i = argc-1; i >= 1; i--) {
 		upperstr(argv[i]);
 		reverse( argv[ i ] );
 
