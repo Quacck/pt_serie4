@@ -1,0 +1,94 @@
+Script started on Mo 15 Jan 2018 15:39:09 CET
+]0;vincent@vincent-VirtualBox: ~/C/pt_serie4[01;32mvincent@vincent-VirtualBox[00m:[01;34m~/C/pt_serie4[00m$ gdb strlen_utf8 
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.5) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "i686-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from strlen_utf8...done.
+(gdb)  53[K[K[Kb 53
+Breakpoint 1 at 0x804857f: file strlen_utf8.c, line 53.
+(gdb) run Hö
+Starting program: /home/vincent/C/pt_serie4/strlen_utf8 Hö
+
+Breakpoint 1, main (argc=2, argv=0xbfffefa4) at strlen_utf8.c:53
+53			printf("strlen     (\"%s\") = %zu\n", s, strlen(s));
+(gdb) n
+strlen     ("Hö") = 3
+54			printf("strlen_utf8(\"%s\") = %zu\n", s, strlen_utf8(s));
+(gdb) s
+strlen_utf8 (s=0xbffff1d4 "Hö") at strlen_utf8.c:23
+23		size_t len = 0;
+(gdb) wa len
+Hardware watchpoint 2: len
+(gdb) wa s
+Hardware watchpoint 3: s
+(gdb) c
+Continuing.
+
+Hardware watchpoint 2: len
+
+Old value = 3085239920
+New value = 0
+strlen_utf8 (s=0xbffff1d4 "Hö") at strlen_utf8.c:27
+27		while (*s != '\0') {
+(gdb) c
+Continuing.
+
+Hardware watchpoint 3: s
+
+Old value = 0xbffff1d4 "Hö"
+New value = 0xbffff1d5 "ö"
+strlen_utf8 (s=0xbffff1d5 "ö") at strlen_utf8.c:38
+38			len++;
+(gdb) c
+Continuing.
+
+Hardware watchpoint 2: len
+
+Old value = 0
+New value = 1
+strlen_utf8 (s=0xbffff1d5 "ö") at strlen_utf8.c:27
+27		while (*s != '\0') {
+(gdb) c
+Continuing.
+
+Hardware watchpoint 3: s
+
+Old value = 0xbffff1d5 "ö"
+New value = 0xbffff1d7 ""
+strlen_utf8 (s=0xbffff1d7 "") at strlen_utf8.c:37
+37			s++;
+(gdb) c
+Continuing.
+
+Hardware watchpoint 3: s
+
+Old value = 0xbffff1d7 ""
+New value = 0xbffff1d8 "XDG_VTNR=7"
+strlen_utf8 (s=0xbffff1d8 "XDG_VTNR=7") at strlen_utf8.c:38
+38			len++;
+(gdb) OHA
+Undefined command: "OHA".  Try "help".
+(gdb) WAS DA PASSIERR[K[KT
+Undefined command: "WAS".  Try "help".
+(gdb) FEEEEEHLER
+Undefined command: "FEEEEEHLER".  Try "help".
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 27340] will be killed.
+
+Quit anyway? (y or n) y
+]0;vincent@vincent-VirtualBox: ~/C/pt_serie4[01;32mvincent@vincent-VirtualBox[00m:[01;34m~/C/pt_serie4[00m$ exit
+
+Script done on Mo 15 Jan 2018 15:40:12 CET
